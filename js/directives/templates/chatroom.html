@@ -1,0 +1,23 @@
+<div class="chatroom" ng-controller="chatroomController">
+    <h1 class="title is-3 user has-text-primary has-text-centered">Chatting With: <img class="image is-64x64" ng-src="{{friend.profilePicture}}"/> {{friend.username}}</h1>
+    <div class="messages" scroll-glue="glued">
+        <div ng-class="{friend: message.user == friend.id}" ng-repeat="message in messages" class="message-container">
+            <div ng-if="message.user == friend.id" class="user">
+                <img height="25" width="25" ng-src="{{friend.profilePicture}}"/>
+                {{friend.username}}
+            </div>
+            <div ng-if="message.user != friend.id" class="user">
+                <img height="25" width="25" ng-src="{{$parent.user.profilePicture}}"/>
+                {{$parent.user.username}} (you)
+            </div>
+            <div class="box message">
+                {{message.body}}
+            </div>
+        </div>
+    </div>
+
+    <div class="message-input">
+        <input ng-model="messageBody" type="text" placeholder="Enter your message." class="input"/>
+        <button ng-click="sendMessage(messageBody)" class="button is-primary">Send</button>
+    </div>
+</div>

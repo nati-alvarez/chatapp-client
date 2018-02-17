@@ -1,0 +1,103 @@
+<main class="dashboard columns">
+    <aside class="column is-primary is-one-quarter" ng-controller="friendController">
+            <div class="user"> 
+                <h3 class="user title is-4">
+                    <img width="50" height="50" ng-src="{{user.profilePicture}}">
+                    {{user.username}}
+                    <button ng-click="logout()" class="button has-text-weight-bold is-primary">Log Out</button>
+                </h3>
+            </div>
+            <h1 class="title is-3 has-text-centered">Online Friends</h1>
+            
+            <!--loading icon -->
+            <div class="has-text-centered has-text-white load" ng-if="!friends">
+            <div class="loading-container">
+                <div class="loading-icon"></div>
+            </div>
+            Loading Friends...
+            </div>
+            
+            <div class="has-text-centered" ng-if="!friends[0]">
+                you have no online friends
+            </div>
+            <div class="friends"  ng-if="friends">
+                <div ng-click="$parent.changeTab('chatroom', friend)" ng-repeat="friend in friends" class="animated bounceInLeft friend box media">
+                    <div class="media-left">
+                        <img height="45" width="45" ng-src="{{friend.friend.profilePicture}}"/>
+                    </div>
+                    <div class="media-content">
+                        <div class="content">
+                        <p class="username is-size-5">{{friend.friend.username}}</p>
+                        <small class="is-size-7">online</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </aside>
+    <section class="messages column" ng-controller="friendRequestController">
+        <!-- notifcation for successfull action on friend request -->
+        <div ng-if="$parent.notificationText" class="is-primary notification">
+            <button ng-click="$parent.clearNotification()" class="delete"></button>
+            {{$parent.notificationText}}
+        </div>
+
+        <!--notification for unsuccessful action on friend request -->
+        <div ng-if="$parent.notificationErrText" class="is-danger notification">
+            <button ng-click="$parent.clearNotification()" class="delete"></button>
+            {{$parent.notificationErrText}}
+        </div>
+
+        <nav class="navbar">
+            <div class="navbar-menu">
+
+                <!-- search for users -->
+                <div class="navbar-start">
+                    <div class="search-users navbar-item is-hoverable has-dropdown" ng-controller="searchResults">
+                        <div class="navbar-item">
+                            <input ng-model="keyword" ng-change="searchUsers()" class="input" placeholder="search for users"/>
+                        </div>
+                        <div ng-if="keyword" class="navbar-dropdown is-boxed">
+                            <div ng-if="!users[0]" class="navbar-item">No results for {{keyword}}</div>
+                            <search-results users="users"></search-results>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="navbar-end">
+                    <div style="padding:10px;" class="has-dropdown is-hoverable navbar-item">
+                        <div class="icon is-large">
+                            <i class="fa fa-2x fa-bell"></i>
+                            <div ng-if="friendRequests.length" ng-class="notificationAnimation" class="notification animated has-text-weight-bold is-danger">{{friendRequests.length}}</div>
+                        </div>
+                        <div class="navbar-dropdown is-boxed">
+                            <!-- if there are no friend requests -->
+                            <div ng-if="!friendRequests[0]" class="navbar-item">No friend requests</div>
+
+                            <div ng-if="friendRequests[0]" ng-repeat="friendRequest in friendRequests" class="friend-request navbar-item">
+                                <friend-request request="friendRequest"></friend-request>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-click="changeTab('account')"class="navbar-item">
+                        <span class="icon is-large">
+                            <i class="fa fa-2x fa-cogs"></i>
+                        </span>
+                    </div>
+                    <!-- <div ng-click="changeTab('messages')"class="navbar-item">
+                        <span class="icon is-large">
+                            <i class="fa fa-2x fa-comments"></i>
+                        </span>
+                    </div> -->
+                </div>
+            </div>
+        </nav>
+        <section class="section">
+            <messages ng-if="currentTab === 'messages'"></messages>
+            <account-settings ng-if="currentTab === 'account'"></account-settings>
+            <chatroom ng-if="currentTab == 'chatroom'"></chatroom>
+            <div ng-if="currentTab === 'userProfile'">
+                My Account
+            </div>
+        </section>
+    </section>
+</main>

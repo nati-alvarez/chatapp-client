@@ -1,0 +1,234 @@
+html {
+    height: 100vh;
+}
+
+body{
+    overflow: hidden;
+}
+
+.loading-container {
+    border: 5px solid #00d1b2;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-radius: 50%;
+    width: 65px;
+    height: 65px;
+    padding: 3px;
+    margin: 0 auto;
+    animation: 1.5s rotate linear forwards infinite;
+}
+
+.loading-icon {
+    background: white;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.dashboard {
+    height: 102vh;
+}
+
+.dashboard .search-users input {
+    min-width: 300px;
+}
+
+/* undoing absolutely retarded styles on bulma framework */
+.dashboard .navbar-item img{
+    max-height: none;
+}
+
+aside {
+    padding: 0px;
+    background: #8F78AD;
+    box-shadow: 0px 0px 15px 1px silver;
+    /* border-right: 3px solid #FF6A00; */
+}
+
+aside.column {
+    padding: .75rem .0px .75rem .75rem;
+}
+
+aside .user {
+    padding: 3px;
+    text-align: center;
+    background: #1C053A;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+aside .user h3 {
+    margin-bottom: 0px;
+}
+
+.user img {
+    border-radius: 5px;
+    vertical-align: middle;
+}
+
+aside .friends {
+    padding: 2rem 1rem;
+    margin-right: 5px;
+    margin-top: 5px;
+    overflow-y: scroll;
+    height: 80%;
+}
+
+.friends::-webkit-scrollbar-track{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+    background-color: #F5F5F5;
+    background: transparent;
+}
+
+.friends::-webkit-scrollbar{
+    border-radius: 10px;
+	width: 12px;
+    background-color: rgba(0,0,0,0.3);
+    background: transparent;
+}
+
+.friends::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+    background: gainsboro;
+}
+
+aside .friend {
+    width: 90%;
+    margin: 0 auto;
+}
+
+aside .friend .username {
+    margin-bottom: 0px;
+}
+
+
+nav {
+    margin: 0px 2%;
+}
+
+nav .image {
+    margin-right: 5px;
+}
+
+.navbar-item.friend-request {
+    flex-direction: column;
+}
+
+.friend-request .request-actions {
+    margin-top: 5px;
+}
+
+nav .notification {
+    position: absolute;
+    left: 55%;
+    top: 18px;
+    font-size: 12px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    padding: 0px 8px 0px 4px;
+    border-radius: 50%;
+}
+
+section.messages {
+    padding-left: 0px;
+}
+
+.message {
+    border-radius: 5px;
+}
+
+.message .title {
+    margin-bottom: 5px;
+}
+
+.message .media-content {
+    padding: 2%;
+}
+
+.chatroom {
+    height: 100%;
+}
+
+.chatroom .user .image {
+    display: inline-block
+}
+
+.chatroom .message-input {
+    position: fixed;
+    display: block;
+    width: 100%;
+    margin:  0 auto;
+    bottom: 0px;
+    margin-left: -25px; 
+    padding: 1% 2%;
+    background: #1C053A;
+}
+
+.chatroom .messages {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow-y: scroll; 
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 0px 20px; 
+}
+
+.chatroom .message-container .user {
+    margin-bottom: 10px;
+    color: darkgray;
+}
+
+.chatroom .message-container .message {
+    max-width: 300px;
+    margin-bottom: 25px;
+}
+
+.chatroom .friend {
+    align-self: flex-end;
+}
+
+.chatroom .friend .user {
+    text-align: right;
+}
+
+.chatroom .friend .message {
+    background: #8F78AD; 
+    color: white;
+}
+
+.messages::-webkit-scrollbar-track{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+    background-color: #F5F5F5;
+    background: transparent;
+}
+
+.messages::-webkit-scrollbar{
+    border-radius: 10px;
+	width: 12px;
+    background-color: rgba(0,0,0,0.3);
+    background: transparent;
+}
+
+.messages::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+    background: gainsboro;
+}
+
+.message-input .input {
+    width: 60%;
+}

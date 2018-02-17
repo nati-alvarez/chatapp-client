@@ -1,0 +1,11 @@
+<div ng-repeat="user in users" class="navbar-item media">
+    <div class="media-left">
+        <p class="image is-48x48">
+            <img ng-src="{{user.profile_picture}}">
+        </p>
+    </div>
+    <div class="media-content">
+        <p class="content is-size-5">{{user.username}}</p>
+        <button ng-click="$parent.$parent.sendFriendRequest(user.id)" class="button is-primary">Add Friend</button>
+    </div>
+</div>

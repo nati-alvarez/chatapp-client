@@ -1,0 +1,10 @@
+<div class="media">
+    <div class="media-left image is-32x32">
+        <img ng-src="{{request.sender.profilePicture}}"/>
+    </div>
+    <p class="media-content">Friend Request from {{request.sender.username}}</p>
+    </div>
+    <div class="request-actions">
+        <button ng-click="$parent.acceptFriendRequest(request.id)" class="button is-primary">Accept</button>
+        <button ng-click="$parent.declineFriendRequest(request.id)" class="button is-danger">Decline</button>
+</div>

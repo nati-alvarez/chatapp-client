@@ -1,0 +1,17 @@
+<div class="account-settings" ng-controller="accountSettings">
+    <h3 class="title is-3 has-text-primary">Edit Your Account</h3>
+    <form>
+        <div class="field">
+            <label class="label">Change Your username</label>
+            <input ng-model="username" class="input" type="text"/>
+            <small class="help">Username must be unique</small>
+        </div>
+        <div class="field">
+            <label class="label">Change Your Profile Picture</label>
+            <img class="image is-128x128" ng-src="{{$parent.user.profilePicture}}"/>
+            <input ng-model="profilePicture" class="input" placeholder="Enter image url"/>
+            <small class="help">Enter a url. File uploads are not supported at this time.</small>
+        </div>
+        <button ng-class="{is-loading: isLoading === true}" ng-click="updateProfile()" class="button is-primary">Make Changes</button>
+    </form>
+</div>

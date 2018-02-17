@@ -1,0 +1,72 @@
+<div ng-controller="homeController">
+    <canvas id="canvas-bg"></canvas>
+    <div class="hero is-fullheight is-bold">
+        <div class="hero-body">
+            <div class="container box">
+                <div class="columns">
+                    <div class="column">
+                        <h1 class="has-text-centered title is-1 has-text-primary">Chattrbox.io</h1>
+                        <h5 class="has-text-centered title is-5">This is a basic chat application I built in Angular and Node.js.</h5>
+                        <div class="has-text-centered ctas">
+                            <button ng-click="updateState('login')"  class="button is-medium is-primary has-text-weight-bold">Login</button>
+                            <button ng-click="updateState('signup')" id="signup-cta" class="button is-medium has-text-weight-bold">Sign Up</button>
+                        </div>
+                    </div>
+                    <div class="forms column">
+
+                        <!-- login form -->
+                        <form class="animated" ng-if="state === 'login'" ng-class="(state === 'login')? 'fadeInUp' : ''">
+                            <h4 class="title is-4 has-text-primary">Login</h4>
+                            <div class="field">
+                                <label class="label">Username</label>
+                                <div class="control">
+                                    <input ng-model="loginInfo.username" class="input" type="text"/> 
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Password</label>
+                                <div class="control">
+                                    <input ng-model="loginInfo.password" class="input" type="password"/>
+                                </div>
+                            </div>
+                            <button ng-click="login()"  ng-class="(isLoading === true)? 'is-loading' : ''" class="button is-primary">Submit</button>
+                            <div ng-if="errorMessage" class="message is-danger">
+                                <p class="message-body">{{errorMessage}}</p>
+                            </div>
+                        </form>
+
+                        <!-- signup form -->
+                        <form class="signup-form animated" ng-if="state === 'signup'" ng-class="(state === 'signup')? 'fadeInUp' : ''">
+                            <h4 class="title is-4">Sign Up</h4>
+                            <div class="field">
+                                <label class="label">Username</label>
+                                <div class="control">
+                                    <input ng-model="signupInfo.username" class="input" type="text"/>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Email</label>
+                                <div class="control">
+                                    <input ng-model="signupInfo.email" class="input" type="text"/>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Password</label>
+                                <div class="control">
+                                    <input ng-model="signupInfo.password" class="input" type="password"/>
+                                </div>
+                            </div>
+                            <button ng-click="signup()" ng-class="(isLoading === true)? 'is-loading' : ''" class="signup-btn button">Submit</button>
+                            <div ng-if="errorMessage" class="message is-danger">
+                                <p class="message-body">{{errorMessage}}</p>
+                            </div>
+                            <div ng-if="successMessage" class="message is-success">
+                                <p class="message-body">{{successMessage}}</p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
